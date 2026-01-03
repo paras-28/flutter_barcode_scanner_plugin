@@ -1,9 +1,16 @@
 package com.example.barcode_scanner
 
+import android.app.Activity
+import android.content.Intent
+import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
+import io.flutter.plugin.common.MethodChannel.Result
+import io.flutter.plugin.common.PluginRegistry
 
 class BarcodeScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     PluginRegistry.ActivityResultListener {
@@ -23,8 +30,6 @@ class BarcodeScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
     /// Listens for messages from Flutter
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-
-
         if (call.method == "scanBarcode") {
             if (activity == null) {
                 result.error("NO_ACTIVITY", "Plugin not attached to an activity", null)

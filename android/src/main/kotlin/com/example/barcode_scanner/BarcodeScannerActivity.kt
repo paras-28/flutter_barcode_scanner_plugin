@@ -1,4 +1,4 @@
-package com.example.barcode_scanner_plugin
+package com.example.barcode_scanner
 
 import android.Manifest
 import android.content.Intent
