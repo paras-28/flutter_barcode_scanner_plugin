@@ -4,9 +4,7 @@ import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
 
-/*
 class BarcodeScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     PluginRegistry.ActivityResultListener {
     private lateinit var channel: MethodChannel
@@ -25,6 +23,8 @@ class BarcodeScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
 
     /// Listens for messages from Flutter
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+
+
         if (call.method == "scanBarcode") {
             if (activity == null) {
                 result.error("NO_ACTIVITY", "Plugin not attached to an activity", null)
@@ -34,6 +34,8 @@ class BarcodeScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
             pendingResult = result
             val intent = Intent(activity, BarcodeScannerActivity::class.java)
             activity?.startActivityForResult(intent, BARCODE_SCAN_REQUEST)
+        } else if (call.method == "getPlatformVersion") {
+            result.success("Android ${android.os.Build.VERSION.RELEASE}")
         } else {
             result.notImplemented()
         }
@@ -75,10 +77,12 @@ class BarcodeScannerPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     override fun onDetachedFromActivity() {
         activity = null
     }
-}*/
+}
 
 
 /** BarcodeScannerPlugin */
+
+/*
 class BarcodeScannerPlugin :
     FlutterPlugin,
     MethodCallHandler {
@@ -111,4 +115,7 @@ class BarcodeScannerPlugin :
         channel.setMethodCallHandler(null)
     }
 }
+
+*/
+
 
